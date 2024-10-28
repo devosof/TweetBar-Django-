@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Django Tweets | Search Results
+{% endblock %}
+
+
+{% block content %}
+    <h1 class='text-center mt-4'>Search Results</h1>
+
+
+    {% for tweet in queryset %}
+        <ul>
+            <li>{{tweet.user.username}} - {{tweet.text}}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}

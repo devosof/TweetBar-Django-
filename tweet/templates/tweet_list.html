@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Django Tweets
+{% endblock %}
+
+{% block content %}
+    <h1 class='text-center my-5 text-xl'>Explore Tweets From the World!</h1>
+
+    {% if query %}
+        <h3 class="text-center mt-4">Search results for "{{ query }}":</h3>
+        <div class="container row gap-3 justify-content-center">
+            {% if tweets %}
+                {% for tweet in tweets %}
+                <div class="card" style="width: 18rem;">
+                    {% if tweet.photo %}
+                        <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet image">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ tweet.user.username }} </h5>
+                        <p class="card-text"> {{ tweet.text }} </p>
+                        {% if tweet.user == user %}
+                            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center">No tweets found for "{{ query }}".</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="container row gap-3 justify-content-center">
+            {% for tweet in tweets %}
+            <div class="card" style="width: 18rem;">
+                {% if tweet.photo %}
+                    <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title"> {{ tweet.user.username }} </h5>
+                    <p class="card-text"> {{ tweet.text }} </p>
+                    {% if tweet.user == user %}
+                        <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends "layout.html" %}
+
+{% block title %}
+    Django Tweets
+{% endblock %}
+
+
+{% block content %}
+    <h1 class='text-center mt-4'>Welcome to Django Tweets Project</h1>
+
+    <a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">
+        Create a Tweet
+    </a>
+
+    <div class="container row gap-3">
+        {% for tweet in tweets %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{tweet.photo.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"> {{ tweet.user.username }} </h5>
+              <p class="card-text"> {{ tweet.text }} </p>
+              {% if tweet.user == user %}
+                <a href="{% url 'tweet_edit' tweet.id%}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'tweet_delete' tweet.id%}" class="btn btn-danger">Delete</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+    </div> 
+
+    
+
+{% endblock %} {% endcomment %}

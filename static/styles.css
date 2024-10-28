@@ -1,0 +1,20 @@
+#main-content {
+    display: block;
+}
+
+#search-results {
+    display: block;
+}
+
+#search-results ul, #main-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#search-results li, #main-content li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #373434;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
